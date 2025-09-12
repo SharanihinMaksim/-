@@ -1,0 +1,22 @@
+import pandas as pd
+
+csv = 'ncr_ride_bookings.csv'
+
+try:
+    crpt = pd.read_csv(csv)
+    print(crpt.describe())
+    print('\n' + '-' + '\n')
+
+    print('Количество пропущенных значений в каждом столбце')
+    print(crpt.isnull().sum())
+    print('\n' + '-' + '\n')
+
+    categ_stolb = ('Booking Status', 'Vehicle Type')
+
+    for stolb in categ_stolb:
+        unig_znach = csv[stolb].unigue()
+        print(f'Уникальные значения {stolb}')
+        print('\n' + '-' + '\n')
+
+except:
+    pass
