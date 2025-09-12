@@ -5,18 +5,20 @@ csv = 'ncr_ride_bookings.csv'
 try:
     crpt = pd.read_csv(csv)
     print(crpt.describe())
-    print('\n' + '-' + '\n')
+    print('\n' + '-'*50 + '\n')
 
-    print('Количество пропущенных значений в каждом столбце')
+    print('Количество пропущенных значений в каждом столбце (null)')
     print(crpt.isnull().sum())
-    print('\n' + '-' + '\n')
+    print('\n' + '-'*50 + '\n')
 
-    categ_stolb = ('Booking Status', 'Vehicle Type')
+    unique_values = crpt['Booking Status'].unique()
+    print(unique_values)
+    print('\n' + '-' * 50 + '\n')
+    unique_values1 = crpt['Vehicle Type'].unique()
+    print(unique_values1)
+    print('\n' + '-' * 50 + '\n')
 
-    for stolb in categ_stolb:
-        unig_znach = csv[stolb].unigue()
-        print(f'Уникальные значения {stolb}')
-        print('\n' + '-' + '\n')
 
-except:
-    pass
+
+except FileNotFoundError:
+    print(f'Ошибка файла {csv} не найден')
